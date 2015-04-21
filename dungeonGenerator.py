@@ -2,6 +2,18 @@ import sys	#for newline free print
 import random 	#pseudorng access
 import math
 
+class Room:
+	#standard room object
+	#box shaped
+	def __init__(self, xPos, yPos, xSize, ySize):
+		self.xPos = xPos
+		self.yPos = yPos
+		self.xSize = xSize
+		self.ySize = ySize
+	def __lt__(self, other):
+		return ((self.xPos, self.yPos, self.xSize, self.ySize) <
+			(other.xPos, other.yPos, other.xSize, other.ySize))
+		
 def printMap():
 	for x in range(0, xDun):
 		for y in range(0, yDun):
@@ -21,25 +33,35 @@ def digRoom(roomVal="*"):
 	for x in range(xPos-1, xPos+xRoom+1):
 		for y in range(yPos-1, yPos+yRoom+1):
 			if MapOfDun[x][y] != '#':
-				return
+				return None
 	
 	for x in range(xPos, xPos+xRoom):
 		for y in range(yPos, yPos+yRoom):
+			newRoom = Room(xPos, yPos, xRoom, yRoom)
 			MapOfDun[x][y] = roomVal
-	return
+			
+			
+	return newRoom
 
 #Generate maximum map size
 
 xDun = 30
 yDun = 50
 roomMaxPercent = .25
-roomAttempts = 100
+roomAttempts = 1000
 
 MapOfDun = [['#' for x in range(yDun)] for x in range(xDun)]
+roomList = []
 
 for x in range(0, roomAttempts):
-	digRoom()
+	r = digRoom()
+	if r is None:
+		#do nothing
+		1
+	else:
+		roomList.append(r)
 
+print("Total Rooms: " + str(len(roomList))  + " (Of a total " + str(roomAttempts) + " attempts).")
 
 printMap()
 
