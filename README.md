@@ -14,3 +14,8 @@ Key
 Files:
 	dungeonGenerator.py - The main portion of the program. End result will be something resembling a dungeon for use in rougelikes
 	mazeProto.py - Prototype maze generation. 
+	
+Some useful sources:
+ * http://journal.stuffwithstuff.com/2014/12/21/rooms-and-mazes/
+ * http://www.roguebasin.com/index.php?title=Dungeon-Building_Algorithm
+ * http://pcg.wikidot.com/pcg-algorithm:dungeon-generation
