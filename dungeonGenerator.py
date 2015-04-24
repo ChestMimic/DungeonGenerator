@@ -21,10 +21,31 @@ def printMap():
 		sys.stdout.write("\n")
 	return
 	
+def erectRoom(roomVal='#'):
+	# stuff a random room in the map
+	xRoom = random.randrange(3, int(round(xDun*roomMaxPercent))) 
+	yRoom = random.randrange(3, int(round(yDun*roomMaxPercent))) 
+	xPos = random.randrange(0, xDun-xRoom-1)
+	yPos = random.randrange(0, yDun-yRoom-1)
+	
+	for x in range(xPos, xPos+xRoom):
+		for y in range(yPos, yPos+yRoom):
+			if MapOfDun[x][y] != '*':
+				return None
+	
+	for x in range(xPos, xPos+xRoom):
+		for y in range(yPos, yPos+yRoom):
+			newRoom = Room(xPos, yPos, xRoom, yRoom)
+			if x != xPos and x != xPos+xRoom-1 and y != yPos and y != yPos+yRoom-1:
+				continue
+			MapOfDun[x][y] = roomVal
+	return newRoom
+	
+	
 def digRoom(roomVal="*"):
 	# stuff a random room in the map
-	xRoom = random.randrange(2, int(round(xDun*roomMaxPercent))) 
-	yRoom = random.randrange(2, int(round(yDun*roomMaxPercent))) 
+	xRoom = random.randrange(3, int(round(xDun*roomMaxPercent))) 
+	yRoom = random.randrange(3, int(round(yDun*roomMaxPercent))) 
 	xPos = random.randrange(0, xDun-xRoom-1)
 	yPos = random.randrange(0, yDun-yRoom-1)
 
@@ -50,11 +71,11 @@ yDun = 50
 roomMaxPercent = .25
 roomAttempts = 1000
 
-MapOfDun = [['#' for x in range(yDun)] for x in range(xDun)]
+MapOfDun = [['*' for x in range(yDun)] for x in range(xDun)]
 roomList = []
 
 for x in range(0, roomAttempts):
-	r = digRoom()
+	r = erectRoom()
 	if r is None:
 		#do nothing
 		1
