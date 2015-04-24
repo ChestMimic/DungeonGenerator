@@ -15,8 +15,8 @@ class Room:
 			(other.xPos, other.yPos, other.xSize, other.ySize))
 		
 def printMap():
-	for x in range(0, xDun):
-		for y in range(0, yDun):
+	for x in range(0, xDun-1):
+		for y in range(0, yDun-1):
 			sys.stdout.write(str(MapOfDun[x][y]))
 		sys.stdout.write("\n")
 	return
@@ -25,8 +25,8 @@ def erectRoom(roomVal='#'):
 	# stuff a random room in the map
 	xRoom = random.randrange(3, int(round(xDun*roomMaxPercent))) 
 	yRoom = random.randrange(3, int(round(yDun*roomMaxPercent))) 
-	xPos = random.randrange(0, xDun-xRoom-1)
-	yPos = random.randrange(0, yDun-yRoom-1)
+	xPos = random.randrange(0, xDun-xRoom)
+	yPos = random.randrange(0, yDun-yRoom)
 	
 	for x in range(xPos, xPos+xRoom):
 		for y in range(yPos, yPos+yRoom):
@@ -37,8 +37,9 @@ def erectRoom(roomVal='#'):
 		for y in range(yPos, yPos+yRoom):
 			newRoom = Room(xPos, yPos, xRoom, yRoom)
 			if x != xPos and x != xPos+xRoom-1 and y != yPos and y != yPos+yRoom-1:
-				continue
-			MapOfDun[x][y] = roomVal
+				MapOfDun[x][y] = 'X'
+			else:
+				MapOfDun[x][y] = roomVal
 	return newRoom
 	
 	
