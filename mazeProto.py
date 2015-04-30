@@ -1,6 +1,9 @@
 import sys
 import random
 import subprocess as sp
+
+from Cell import Cell
+
 sp.call('cls',shell=True)
 
 class Cursor:
@@ -8,14 +11,7 @@ class Cursor:
 		self.xPos = xPos
 		self.yPos = yPos
 		
-class Cell:
-	def __init__(self, xPos, yPos):
-		self.xPos = xPos
-		self.yPos = yPos
-			
-	def __eq__(self, other):
-		return self.xPos == other.xPos and self.yPos == other.yPos
-	
+
 def printMap():
 	sp.call('cls',shell=True)
 	for y in range(0, yDun-1):
@@ -29,11 +25,13 @@ def visit(cell):
 	return cell
 	
 def breakWall(cellA, cellB):
+		
 	if MapOfDun[cellA.xPos][cellA.yPos] == '#':
 		MapOfDun[cellA.xPos][cellA.yPos] = ' '
 		
 	if MapOfDun[cellB.xPos][cellB.yPos] == '#':
 		MapOfDun[cellB.xPos][cellB.yPos] = ' '
+	
 	
 def digMaze(xDun, yDun):
 	xStart = random.randrange(0, xDun-1)
