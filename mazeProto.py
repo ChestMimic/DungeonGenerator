@@ -18,8 +18,8 @@ class Cell:
 	
 def printMap():
 	sp.call('cls',shell=True)
-	for x in range(0, xDun-1):
-		for y in range(0, yDun-1):
+	for y in range(0, yDun-1):
+		for x in range(0, xDun-1):
 			sys.stdout.write(str(MapOfDun[x][y]))
 		sys.stdout.write("\n")
 	return
@@ -30,14 +30,14 @@ def visit(cell):
 	
 def breakWall(cellA, cellB):
 	if MapOfDun[cellA.xPos][cellA.yPos] == '#':
-		MapOfDun[cellA.xPos][cellA.yPos] = '*'
+		MapOfDun[cellA.xPos][cellA.yPos] = ' '
 		
 	if MapOfDun[cellB.xPos][cellB.yPos] == '#':
-		MapOfDun[cellB.xPos][cellB.yPos] = '*'
+		MapOfDun[cellB.xPos][cellB.yPos] = ' '
 	
 def digMaze(xDun, yDun):
-	xStart = 0
-	yStart = 0
+	xStart = random.randrange(0, xDun-1)
+	yStart = random.randrange(0, yDun-1)
 	cur = Cell(xStart, yStart)
 	visit(cur)
 	
@@ -93,7 +93,7 @@ def digMaze(xDun, yDun):
 	
 	return
 
-xDun = 20
+xDun = 40
 yDun = 20
 roomMaxPercent = .25
 roomAttempts = 1000

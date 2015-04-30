@@ -68,9 +68,9 @@ def digRoom(roomVal="*"):
 #Generate maximum map size
 
 xDun = 30
-yDun = 50
+yDun = 60
 roomMaxPercent = .25
-roomAttempts = 1000
+roomAttempts = 100
 
 MapOfDun = [['*' for x in range(yDun)] for x in range(xDun)]
 roomList = []
