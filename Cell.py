@@ -21,3 +21,15 @@ class Cell:
 		
 	def isWestOf(self, other):
 		return self.xPos > other.xPos
+		
+	def canGoNorth(self):
+		return self.north
+		
+	def canGoSouth(self):
+		return self.south
+		
+	def canGoEast(self):
+		return self.east
+		
+	def canGoWest(self):
+		return self.west

@@ -2,7 +2,9 @@ import sys
 import random
 import subprocess as sp
 
+from DrawMap import *
 from Cell import Cell
+
 
 sp.call('cls',shell=True)
 
@@ -25,12 +27,29 @@ def visit(cell):
 	return cell
 	
 def breakWall(cellA, cellB):
-		
-	if MapOfDun[cellA.xPos][cellA.yPos] == '#':
-		MapOfDun[cellA.xPos][cellA.yPos] = ' '
-		
-	if MapOfDun[cellB.xPos][cellB.yPos] == '#':
-		MapOfDun[cellB.xPos][cellB.yPos] = ' '
+	if cellA.xPos == cellB.xPos: #same E/W result
+		if cellA.isNorthOf(cellB):
+			cellA.south = True
+			cellB.north = True
+		else:
+			cellA.north = True
+			cellB.south = True	
+	else:
+		if cellA.isWestOf(cellB):
+			cellA.east = True
+			cellB.west = True
+			
+		else:
+			cellA.west = True
+			cellB.east = True
+			
+	if finalList.count(cellA) > 0:
+		finalList.remove(cellA)
+	finalList.append(cellA)
+	
+	if finalList.count(cellB) > 0:
+		finalList.remove(cellB)
+	finalList.append(cellB)
 	
 	
 def digMaze(xDun, yDun):
@@ -87,7 +106,7 @@ def digMaze(xDun, yDun):
 			#pick random univisited cell, make cur and visit
 			cur = random.choice(unvisitedCells)
 			visit(cur)
-		printMap()
+		#printMap()
 	
 	return
 
@@ -97,8 +116,12 @@ roomMaxPercent = .25
 roomAttempts = 1000
 cellStack = []
 unvisitedCells = []
+finalList = []
 
-MapOfDun = [['#' for x in range(yDun)] for x in range(xDun)]
+MapOfDun = [[Cell(x, y) for y in range(yDun)] for x in range(xDun)]
+
+print("Cells made")
+		
 
 for x in range(0, xDun):
 	for y in range(0, yDun):
@@ -106,4 +129,6 @@ for x in range(0, xDun):
 		
 print("Total cells: " + str(len(unvisitedCells)) + "\n")
 digMaze(xDun, yDun)
-printMap()
+
+#printMap()
+drawMapGR(finalList, xDun, yDun)
