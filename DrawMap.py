@@ -3,7 +3,8 @@ from graphics import *
 
 def drawMapGR(CellList, xCount, yCount):
 	scale = 15
-	win = GraphWin((yCount-1)*scale, (xCount-1)*scale) #Y then X
+	win = GraphWin("Maze", (yCount)*scale, (xCount)*scale) #Y then X
+	
 		
 	for x in CellList:
 		print("X/Y: " + str(x.xPos) + " " + str(x.yPos))
@@ -11,8 +12,8 @@ def drawMapGR(CellList, xCount, yCount):
 		tl = Point(x.yPos*scale, x.xPos*scale)
 		br = Point(x.yPos*scale+scale, x.xPos*scale+scale )
 		rect = Rectangle(tl, br)
-		rect.setFill("blue")
-		rect.setOutline("blue")
+		rect.setFill("white")
+		rect.setOutline("white")
 		rect.draw(win)
 		
 	for x in CellList:
