@@ -1,13 +1,12 @@
 from graphics import *
 
-
 def drawMapGR(CellList, xCount, yCount):
 	scale = 15
 	win = GraphWin("Maze", (yCount)*scale, (xCount)*scale) #Y then X
 	
 		
 	for x in CellList:
-		print("X/Y: " + str(x.xPos) + " " + str(x.yPos))
+		#print("X/Y: " + str(x.xPos) + " " + str(x.yPos))
 		
 		tl = Point(x.yPos*scale, x.xPos*scale)
 		br = Point(x.yPos*scale+scale, x.xPos*scale+scale )
