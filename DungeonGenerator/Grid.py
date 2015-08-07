@@ -1,7 +1,7 @@
 ﻿#A Map is a list of Cells, with metadata providing X and Y bounds
-from Cell import Cell
+from DungeonGenerator import Cell as DGCell
 
-class Map:
+class Grid(object):
 	def __init__(self, xBound, yBound):
 		self.xBound = xBound
 		self.yBound = yBound
@@ -9,8 +9,9 @@ class Map:
 		#create the list of all Cells
 		for x in range(0, xBound):
 			for y in range(0, yBound):
-				self.lst.append(Cell(x, y))
+				self.lst.append(DGCell.Cell(x, y))
 
+	#For testing only
 	def printMap(self):
 		lines = [] 
 		#theoretically, Cells are in order of X
@@ -29,5 +30,5 @@ class Map:
 			print(l)
 
 if __name__ == "__main__":
-	mp = Map(5, 5)
+	mp = Grid(5, 5)
 	mp.printMap()

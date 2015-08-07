@@ -38,5 +38,9 @@ class Cell:
 		
 	def canGoWest(self):
 		return self.west
+
+	def isClean(self):
+		return self.canGoEast() == False and self.canGoNorth() == False and self.canGoSouth() == False and self.canGoWest() == False
+
 	def __str__(self):
 		return "X"
