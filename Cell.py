@@ -39,4 +39,4 @@ class Cell:
 	def canGoWest(self):
 		return self.west
 	def __str__(self):
-		return "(" + str(self.xPos) + ", " + str(self.yPos) + ")"	
+		return "X"
