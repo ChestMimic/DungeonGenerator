@@ -1,4 +1,4 @@
-import sys	#for newline free print
+﻿import sys	#for newline free print
 import random 	#pseudorng access
 import math
 
