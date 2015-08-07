@@ -6,19 +6,13 @@ April 2015
 
 Create a 2D dungeon "map"
 
-Key
+Structure notes:
+A Cell is a base unit of a Map, and contains X and Y position along with possible directional moves (whether a wall is open or closed).
+A Map is a list of cells.  
 
-    * = empty space (room, hallway, etc)
-    # = wall
-
-Files:
-	dungeonGenerator.py - The main portion of the program. End result will be something resembling a dungeon for use in rougelikes
-	mazeProto.py - Prototype maze generation. 
 	
 Some useful sources:
  * http://journal.stuffwithstuff.com/2014/12/21/rooms-and-mazes/
  * http://www.roguebasin.com/index.php?title=Dungeon-Building_Algorithm
  * http://pcg.wikidot.com/pcg-algorithm:dungeon-generation
  
- Dependent on Zelle's graphics.py file (as of May 2015), available at http://mcsp.wartburg.edu/zelle/python/
- Zelle's source code is available under the GPL license.
