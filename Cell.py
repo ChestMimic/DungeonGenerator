@@ -9,7 +9,8 @@ class Cell:
 		self.south = False
 		self.east = False
 		self.west = False
-			
+
+
     #Determine equality by whether or not two cells occupy the same X-Y space
 	def __eq__(self, other):
 		return self.xPos == other.xPos and self.yPos == other.yPos
@@ -37,3 +38,5 @@ class Cell:
 		
 	def canGoWest(self):
 		return self.west
+	def __str__(self):
+		return "(" + str(self.xPos) + ", " + str(self.yPos) + ")"	

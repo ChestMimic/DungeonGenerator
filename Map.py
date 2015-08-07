@@ -7,6 +7,11 @@ class Map:
         self.yBound = yBound
         self.lst = []
         #create the list of all Cells
-        for x in range(0, xBound-1):
-            for y in range(0, yBound-1):
+        for x in range(0, xBound):
+            for y in range(0, yBound):
                 self.lst.append(Cell(x, y))
+
+if __name__ == "__main__":
+    mp = Map(5, 5)
+    for c in mp.lst:
+        print(c)
