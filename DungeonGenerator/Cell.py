@@ -5,10 +5,7 @@ class Cell:
 	def __init__(self, xPos, yPos):
 		self.xPos = xPos
 		self.yPos = yPos
-		self.north = None
-		self.south = None
-		self.east = None
-		self.west = None
+		self.joined = []
 
 
     #Determine equality by whether or not two cells occupy the same X-Y space
@@ -32,29 +29,16 @@ class Cell:
 		return self.xPos > other.xPos
 		
 
-	def canGoNorth(self):
-		if self.north == None
-			return False
-		return True
-		
-	def canGoSouth(self):
-		if self.south == None
-			return False
-		return True
-		
-	def canGoEast(self):
-		if self.east == None
-			return False
-		return True
-		
-	def canGoWest(self):
-		if self.west == None
-			return False
-		return True
+	def joinCell(self, CellB):
+		if(CellB not in self.joined):
+			self.joined.append(CellB)
+			cellB.joinCell(self)
 
 	#depreceated
-	def isClean(self):
-		return self.canGoEast() == False and self.canGoNorth() == False and self.canGoSouth() == False and self.canGoWest() == False
+	def isIsolated(self):
+		if len(self.joined) == 0:
+			return True
+		return False
 
 	def __str__(self):
 		return "X"
