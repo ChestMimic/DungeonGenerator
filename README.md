@@ -1,5 +1,7 @@
 # DungeonGenerator
 
+Adding pyglet dependency soon
+
 Dungeon Generator
 written by Mark Fitzgibbon (ibbolia) 
 April 2015
