@@ -5,40 +5,54 @@ class Cell:
 	def __init__(self, xPos, yPos):
 		self.xPos = xPos
 		self.yPos = yPos
-		self.north = False
-		self.south = False
-		self.east = False
-		self.west = False
+		self.north = None
+		self.south = None
+		self.east = None
+		self.west = None
 
 
     #Determine equality by whether or not two cells occupy the same X-Y space
 	def __eq__(self, other):
 		return self.xPos == other.xPos and self.yPos == other.yPos
 		
+	#depreceated
 	def isNorthOf(self, other):
 		return self.yPos < other.yPos
 		
+	#depreceated
 	def isSouthOf(self, other):
 		return self.yPos > other.yPos
 		
+	#depreceated
 	def isEastOf(self, other):
 		return self.xPos < other.xPos
 		
+	#depreceated
 	def isWestOf(self, other):
 		return self.xPos > other.xPos
 		
+
 	def canGoNorth(self):
-		return self.north
+		if self.north == None
+			return False
+		return True
 		
 	def canGoSouth(self):
-		return self.south
+		if self.south == None
+			return False
+		return True
 		
 	def canGoEast(self):
-		return self.east
+		if self.east == None
+			return False
+		return True
 		
 	def canGoWest(self):
-		return self.west
+		if self.west == None
+			return False
+		return True
 
+	#depreceated
 	def isClean(self):
 		return self.canGoEast() == False and self.canGoNorth() == False and self.canGoSouth() == False and self.canGoWest() == False
 
